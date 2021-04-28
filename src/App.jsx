@@ -47,16 +47,27 @@ export function App() {
   };
 
   return (
-    <React.Fragment>
-      <TodoList todos={todos} toggleTodo={toggleTodo} />
-      <input ref={todoTaskRef} type={"text"} placeholder={"Nueva Tarea"} />
-      <button onClick={handleTodoAdd}>+</button>
-      <button onClick={handleClearAll}>x</button>
+    <div className={"container pt-4"}>
+      <div className={"row"}>
+        <div className={"col-md-8"}>
+          <TodoList todos={todos} toggleTodo={toggleTodo} />
+        </div>
+      </div>
+
+      <div className={"form-group mb-3"}>
+        <input ref={todoTaskRef} type={"text"} placeholder={"Nueva Tarea"} />
+      </div>
+      <button className={"btn btn-success"} onClick={handleTodoAdd}>
+        +
+      </button>
+      <button className={"btn btn-danger"} onClick={handleClearAll}>
+        x
+      </button>
       <div>
         Te quedan {todos.filter((todo) => !todo.completed).length} tareas por
         terminar
       </div>
-    </React.Fragment>
+    </div>
   );
 }
 

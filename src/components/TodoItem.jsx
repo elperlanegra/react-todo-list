@@ -9,8 +9,12 @@ export default function TodoItem({ todo, toggleTodo }) {
 
   return (
     <li>
-      <input type={"checkbox"} onChange={handleTodoClick} />
-      {task}
+      <div className={"card"}>
+        <div className={"card-body"}>
+          <input type={"checkbox"} onChange={handleTodoClick} />
+        </div>
+        {task}
+      </div>
     </li>
   );
 }
