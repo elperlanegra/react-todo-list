@@ -9,6 +9,13 @@ export function App() {
 
   const todoTaskRef = useRef();
 
+  const toggleTodo = (id) => {
+    const newTodos = [...todos];
+    const todo = newTodos.find((todo) => todo.id === id);
+    todo.completed = !todo.completed;
+    setTodos(newTodos);
+  };
+
   const handleTodoAdd = () => {
     const task = todoTaskRef.current.value;
 
@@ -19,15 +26,17 @@ export function App() {
     });
 
     todoTaskRef.current.value = null;
-
   };
 
   return (
     <React.Fragment>
-      <TodoList todos={todos} />
+      <TodoList todos={todos} toggleTodo={toggleTodo} />
       <input ref={todoTaskRef} type={"text"} placeholder={"Nueva Tarea"} />
       <button onClick={handleTodoAdd}>+</button>
       <button>x</button>
+      <div>
+        Te quedan {todos.filter((todo) => !todo.completed ).length} tareas por terminar
+      </div>
     </React.Fragment>
   );
 }
